@@ -21,6 +21,11 @@ def index():
     return dict(message=T('Welcome to web2py!'))
 
 
+def terms_of_service():
+    response.view='default/terms_of_service.html'
+    return dict(message=T("Hello World"))
+
+
 def user():
     """
     exposes:
