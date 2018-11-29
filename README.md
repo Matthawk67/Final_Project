@@ -1,2 +1,2 @@
 # Final Project for CMPS183
-Pycharm doesnt like github
+This is the final project for web applications at UCSC
