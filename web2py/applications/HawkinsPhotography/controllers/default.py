@@ -17,15 +17,21 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    if auth.user.first_name == 'Admin':
-        response.flash = T("Welcome back Matthew!")
-    else:
-        response.flash = T("Welcome "+str(auth.user.first_name) + "!")
+    if auth.user != None:
+        if auth.user.first_name == 'Admin':
+            response.flash = T("Welcome back Matthew!")
+        else:
+            response.flash = T("Welcome "+str(auth.user.first_name) + "!")
     return dict(message=T('Welcome to web2py!'))
 
-
+# Displays Terms of Service Page
 def terms_of_service():
     response.view='default/terms_of_service.html'
+    return dict(message=T("Hello World"))
+
+# Displays Privacy Policy Page
+def privacy_policy():
+    response.view='default/privacy_policy.html'
     return dict(message=T("Hello World"))
 
 
