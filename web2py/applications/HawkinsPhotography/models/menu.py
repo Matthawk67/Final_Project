@@ -50,7 +50,7 @@ def _():
     # ------------------------------------------------------------------------------------------------------------------
     response.menu += [
         (T('Portfolio'), False, URL('default', 'index')),
-        (T('Biography'), False, URL('default', 'index')),
+        (T('Biography'), False, URL('biography')),
     ]
 
 

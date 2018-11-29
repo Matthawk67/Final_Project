@@ -34,6 +34,9 @@ def privacy_policy():
     response.view='default/privacy_policy.html'
     return dict(message=T("Hello World"))
 
+def biography():
+    response.view='default/biography.html'
+    return dict(message=T("Hello World"))
 
 def user():
     """
