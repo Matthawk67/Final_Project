@@ -39,8 +39,14 @@ def biography():
     response.view='default/biography.html'
     return dict(message=T("Hello World"))
 
+# Displays Portfolio Page
 def portfolio():
     response.view='default/portfolio.html'
+    return dict(message=T("Hello World"))
+
+# Display Contact Page
+def contact():
+    response.view='default/contact.html'
     return dict(message=T("Hello World"))
 
 def user():
