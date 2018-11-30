@@ -49,7 +49,7 @@ def _():
     # useful links to internal and external resources
     # ------------------------------------------------------------------------------------------------------------------
     response.menu += [
-        (T('Portfolio'), False, URL('default', 'index')),
+        (T('Portfolio'), False, URL('portfolio')),
         (T('Biography'), False, URL('biography')),
     ]
 

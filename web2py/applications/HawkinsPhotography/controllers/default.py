@@ -39,6 +39,10 @@ def biography():
     response.view='default/biography.html'
     return dict(message=T("Hello World"))
 
+def portfolio():
+    response.view='default/portfolio.html'
+    return dict(message=T("Hello World"))
+
 def user():
     """
     exposes:
