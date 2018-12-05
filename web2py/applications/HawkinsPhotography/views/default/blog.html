@@ -1,0 +1,127 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
+    var get_post_list_url = "{{=URL('api', 'get_post_list')}}";
+    var edit_post_url = "{{=URL('api', 'edit_post')}}";
+    // Like callbacks.
+    var is_logged_in = "{{='true' if auth.user is 'mdhawkin@ucsc.edu' else 'false'}}";
+    var current_user_email = "{{='none' if auth.user is None else auth.user.email}}";
+
+    var replyadd = false;
+
+    function displayAdd() {
+        var x = document.getElementById("add_post");
+        x.style.display = "block";
+        x = document.getElementById("div1");
+        x.style.display = "block";
+        x = document.getElementById("div2");
+        x.style.display = "block";
+        x = document.getElementById("div3");
+        x.style.display = "block";
+        x = document.getElementById("div4");
+        x.style.display = "block";
+        x = document.getElementById("div5");
+        x.style.display = "block";
+    }
+
+        function displayRemove() {
+            var x = document.getElementById("add_post");
+            x.style.display = "none";
+            x = document.getElementById("div1");
+            x.style.display = "none";
+            x = document.getElementById("div2");
+            x.style.display = "none";
+            x = document.getElementById("div3");
+            x.style.display = "none";
+            x = document.getElementById("div4");
+            x.style.display = "none";
+            x = document.getElementById("div5");
+            x.style.display = "none";
+        }
+
+
+</script>
+{{end}}
+
+<div class="main_content">
+
+    <p style="text-align: center; display: block">
+        <img src="{{=URL('static/images', 'logo.png')}}" style="width: 40%">
+    </p>
+
+    <div id="vue-div" class="display:none">
+        <br>
+      <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
+        <div style="text-align: center">
+            <button style="vertical-align: center" onclick="displayAdd()">Add Post!</button>
+            <br>
+        </div>
+
+      <!-- First, let's add a form to insert blog posts. -->
+      <div v-if="is_logged_in" id="add_post" style="display:none">
+        <div class="container form_row">
+          <div id="div1" class="label quarter" style="display:none">
+            Title:
+          </div>
+          <div id="div2" class="form threequarters" style="display:none">
+            <input v-model="form_title" placeholder="Enter the post title"/>
+          </div>
+        </div>
+          <br>
+        <div id="div3" class="container form_row" style="display:none;">
+          <div class="label quarter">
+            Content:
+          </div>
+          <div id="div4" class="form threequarters" style="display:none">
+            <textarea v-model="form_content" placeholder="Enter the content of your post"></textarea>
+          </div>
+        </div>
+          <br>
+        <div class="container form_row"><div class="quarter"></div>
+          <div class="threequarters">
+            <div id="div5" class="submit" style="display:none">
+              <button id="add-post" v-on:click="add_post(); displayRemove();">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message in case there are no posts. -->
+      <div v-if="post_list.length === 0" style="text-align: center">There are no posts.</div>
+
+      <!-- We display the posts. -->
+      <div id="post_list">
+        <div class="post_div" v-for="post in post_list">
+          <div v-if="!post.editing" class="post_title">${post.post_title}</div>
+          <!--<div class="post_content">${post.post_content}</div> -->
+            <div v-if="post.editing">
+                <textarea v-model="post.post_title" id="newtitle"></textarea>
+            </div>
+          <div v-if="!post.editing">
+              <div>${post.post_content}</div>
+          </div>
+            <div v-if="post.editing">
+                <textarea v-model="post.post_content" id="newtext"></textarea>
+                <button v-on:click="submit_post(post._idx)"> Submit </button>
+            </div>
+          <div class="attributes">
+
+              <span v-if="is_logged_in">
+                        <span v-if="post.post_author === current_user_email">
+                            <br>
+                            <button v-on:click="set_editing(post._idx)" class="fa fa-pencil-square-o">Edit Post</button>
+                        </span>
+              </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+
+</div>
+
+<script src="{{=URL('static', 'js/blog.js')}}"></script>

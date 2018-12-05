@@ -9,3 +9,10 @@
   grid-template-rows: 500px auto;
   grid-column-gap: 50px;
 }
+
+div.post_div {
+  margin: 4px;
+  border: 1px black solid;
+  background-color: #eeeeee;
+  padding: 4px;
+}

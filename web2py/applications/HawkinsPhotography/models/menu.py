@@ -52,8 +52,8 @@ def _():
         (T('Portfolio'), False, URL('portfolio')),
         (T('Biography'), False, URL('biography')),
         (T('Contact'), False, URL('contact')),
-        (T('Testimonials'), False, URL('index')),
-        (T('Blog'), False, URL('index'))
+        (T('Testimonials'), False, URL('testimonials')),
+        (T('Blog'), False, URL('blog')),
     ]
 
 

@@ -27,27 +27,35 @@ def index():
 # Displays Terms of Service Page
 def terms_of_service():
     response.view='default/terms_of_service.html'
-    return dict(message=T("Hello World"))
+    return dict(message=T("placeholder"))
 
 # Displays Privacy Policy Page
 def privacy_policy():
     response.view='default/privacy_policy.html'
-    return dict(message=T("Hello World"))
+    return dict(message=T("placeholder"))
 
 # Displays Biography Page
 def biography():
     response.view='default/biography.html'
-    return dict(message=T("Hello World"))
+    return dict(message=T("placeholder"))
 
 # Displays Portfolio Page
 def portfolio():
     response.view='default/portfolio.html'
-    return dict(message=T("Hello World"))
+    return dict(message=T("placeholder"))
 
 # Display Contact Page
 def contact():
     response.view='default/contact.html'
-    return dict(message=T("Hello World"))
+    return dict(message=T("placeholder"))
+
+def blog():
+    response.view='default/blog.html'
+    return dict(message=T("placeholder"))
+
+def testimonials():
+    response.view = 'default/testimonials.html'
+    return dict(message=T("placeholder"))
 
 def user():
     """
