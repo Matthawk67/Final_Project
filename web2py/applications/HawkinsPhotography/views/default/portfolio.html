@@ -1,20 +1,20 @@
 {{extend 'layout.html'}}
 
 {{block head}}
+
 {{end}}
 
 <!DOCTYPE html>
-<html>
-<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
     background-color: #f1f1f1;
-    font-family: Arial;
 }
 
 /* Center website */
@@ -55,6 +55,7 @@ h1 {
 .content {
     background-color: white;
     padding: 4px;
+    margin-bottom: 10px;
 }
 
 /* The "show" class is added to the filtered elements */
@@ -79,6 +80,11 @@ h1 {
   background-color: black;
   color: white;
 }
+
+  img {
+      width: 100%;
+
+  }
 </style>
 </head>
 <body>
@@ -99,58 +105,138 @@ h1 {
 
 <!-- Portfolio Gallery Grid -->
 <div class="row" style="margin: 20px">
-  <div class="column portrait">
-    <div class="content">
-      <img src="{{=URL('static/images', '_MAT2954-2.jpg')}}" alt="portrait" style="width:100%">
+
+    <div class="column portrait">
+        <div class="content" style="margin-bottom: 10px">
+            <a href="{{=URL('static/images', '_MAT3580.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT3580.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT0666.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT0666.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', 'alexbass.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.JPG')}}" data-src="{{=URL('static/images', 'alexbass.jpg')}}" alt="portrait"/>
+            </a>
+        </div>
     </div>
+
+    <div class="column portrait">
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT2954-2.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT2954-2.jpg')}}" alt="portrait"/>
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT5008.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT5008.jpg')}}" alt="portrait"/>
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT6450.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT6450.jpg')}}" alt="portrait"/>
+            </a>
+        </div>
+    </div>
+
+    <div class="column portrait">
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT9106.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT9106.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT8668.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', 'IMG_8668.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+        </div>
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT8668.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT0568.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+        </div>
+    </div>
+</div>
+
+  <div class="row" style="margin: 20px">
+      <div class="column landscape">
+        <div class="content">
+            <a href="{{=URL('static/images', '_MAT3741.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT3741.jpg')}}" alt="landscape" style="width:100%">
+            </a>
+        </div>
+          <div class="content">
+            <a href="{{=URL('static/images/landscapes', 'IMG_7760.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images/landscapes', 'IMG_7760.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+          </div>
+    </div>
+  <div class="column landscape">
+    <div class="content">
+        <a href="{{=URL('static/images', '_MAT8848.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT8848.jpg')}}" alt="landscape" style="width:100%">
+        </a>
+    </div>
+    <div class="content">
+            <a href="{{=URL('static/images/landscapes', '_MAT1360.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images/landscapes', '_MAT1360.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+    </div>
+      <div class="content">
+          <a href="{{=URL('static/images/landscapes', 'IMG_6953.jpg')}}">
+              <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images/landscapes', 'IMG_6953.jpg')}}" alt="portrait" style="width:100%">
+          </a>
+      </div>
   </div>
-  <div class="column portrait">
+  <div class="column landscape">
     <div class="content">
-        <img src="{{=URL('static/images', '_MAT3580.jpg')}}" alt="portrait" style="width:100%">
+        <a href="{{=URL('static/images/landscapes', '_MAT8741-HDR.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT8741-HDR.jpg')}}" alt="landscape" style="width:100%">
+        </a>
     </div>
+    <div class="content">
+            <a href="{{=URL('static/images/landscapes', '_MAT5620.jpg')}}">
+                <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images/landscapes', '_MAT5620.jpg')}}" alt="portrait" style="width:100%">
+            </a>
+    </div>
+      <div class="content">
+          <a href="{{=URL('static/images/landscapes', 'IMG_7424.jpg')}}">
+              <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images/landscapes', 'IMG_7424.jpg')}}" alt="portrait" style="width:100%">
+          </a>
+      </div>
   </div>
-  <div class="column portrait">
-    <div class="content">
-        <img src="{{=URL('static/images', '_MAT9106.jpg')}}" alt="portrait" style="width:100%">
-    </div>
   </div>
 
-  <div class="column landscape">
-    <div class="content">
-      <img src="{{=URL('static/images', '_MAT3741.jpg')}}" alt="landscape" style="width:100%">
-    </div>
-  </div>
-  <div class="column landscape">
-    <div class="content">
-        <img src="{{=URL('static/images', '_MAT8848.jpg')}}" alt="landscape" style="width:100%">
-    </div>
-  </div>
-  <div class="column landscape">
-    <div class="content">
-        <img src="{{=URL('static/images', '_MAT8741-HDR.jpg')}}" alt="landscape" style="width:100%">
-    </div>
-  </div>
-
+  <div class="row" style="margin: 20px">
   <div class="column astro">
     <div class="content">
-        <img src="{{=URL('static/images', '_MAT3696.jpg')}}" alt="astro" style="width:100%">
+        <a href="{{=URL('static/images', '_MAT3696.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT3696.jpg')}}" alt="astro" style="width:100%">
+        </a>
     </div>
   </div>
   <div class="column astro">
     <div class="content">
-        <img src="{{=URL('static/images', '_MAT3257.jpg')}}" alt="astro" style="width:100%">
+        <a href="{{=URL('static/images', '_MAT3257.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT3257.jpg')}}" alt="astro" style="width:100%">
+        </a>
     </div>
   </div>
   <div class="column astro">
     <div class="content">
-        <img src="{{=URL('static/images', '_MAT3251.jpg')}}" alt="astro" style="width:100%">
+        <a href="{{=URL('static/images', '_MAT3251.jpg')}}">
+            <img class="lazy" src="{{=URL('static/images', 'Blank.jpg')}}" data-src="{{=URL('static/images', '_MAT3251.jpg')}}" alt="astro" style="width:100%">
+        </a>
     </div>
   </div>
+  </div>
+</div>
 <!-- END GRID -->
-</div>
 <br>
-<!-- END MAIN -->
-</div>
+</body>
 
 <script>
 filterSelection("all")
@@ -196,7 +282,39 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages = document.querySelectorAll("img.lazy");
+  var lazyloadThrottleTimeout;
+
+  function lazyload () {
+    if(lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }
+
+    lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+        });
+        if(lazyloadImages.length == 0) {
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+    }, 20);
+  }
+
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+});
 </script>
 
 </body>
-</html>

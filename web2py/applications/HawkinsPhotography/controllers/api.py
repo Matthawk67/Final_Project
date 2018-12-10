@@ -1,5 +1,12 @@
 # Here go your api methods.
 
+from gluon.tools import Mail
+mail = Mail()
+
+mail.settings.server = 'smtp@gmail.com:465'
+mail.settings.sender = 'myemail@gmail.com'
+mail.settings.login = 'myemail@gmail.com:secret'
+
 # API Methods for Blog Posts
 @auth.requires_signature()
 def add_post():
