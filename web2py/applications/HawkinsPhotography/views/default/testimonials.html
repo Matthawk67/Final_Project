@@ -56,7 +56,7 @@
 <body>
 <div style="margin-left: 50px; margin-right: 50px">
     <p style="text-align: center; display: block">
-        <img src="{{=URL('static/images', 'logo.png')}}" style="width: 40%">
+        <img src="{{=URL('static/images', 'whitelexlogo.png')}}" style="width: 40%">
     </p>
 </div>
 <div>
@@ -110,12 +110,14 @@
       <div v-if="rating_list.length === 0" style="text-align: center">I apologise as there are no testimonials at this time.</div>
 
         <div id="rating_list">
-        <div class="post_div" v-for="rating in rating_list" style="margin: 50px">
+        <div class="post_div" v-for="rating in rating_list" style="margin: 50px; background-color: ghostwhite">
           <div class="post_author">Username: ${rating.post_author}</div>
+            <br>
           <div v-if="!rating.editing" class="post_content">My Review: ${rating.post_content}</div>
           <div v-if="rating.editing">
               <textarea v-model="rating.post_content" id="newtext"></textarea>
           </div>
+            <br>
           <div v-if="!rating.editing" class="star_rating">
               <span v-for="idx in star_indices">
                     <i v-if="idx <= rating.post_rating" class="fa fa-star"></i>

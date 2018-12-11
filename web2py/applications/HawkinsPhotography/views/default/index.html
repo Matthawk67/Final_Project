@@ -3,19 +3,24 @@
 {{block head}}
 {{end}}
 
+<body>
 
-<div class="main_content">
+<style>
+
+    .textcolor {
+        color: whitesmoke;
+    }
+
+</style>
+
+<div class="main_content " style="background-color: grey">
 
     <p style="text-align: center; display: block">
-        <img src="{{=URL('static/images', 'logo.png')}}" style="width: 40%">
+        <img src="{{=URL('static/images', 'lexlogo.png')}}" style="width: 40%">
     </p>
 
-    <h4 class="center"> WELCOME TO THE HOME OF </h4>
-    <h2 class="center"> Matthew Hawkins Photography </h2>
-    <br>
-
-    <img src="{{=URL('static/images', '_MAT5130.jpg')}}" width="100%"/>
-
+    <img style="padding: 2px; background-color: black" src="{{=URL('static/images', '_MAT5130.jpg')}}" width="100%"/>
 
 </div>
 
+</body>
