@@ -61,7 +61,7 @@
         </div>
 
       <!-- First, let's add a form to insert blog posts. -->
-      <div id="add_post" style="display:none">
+      <div id="add_post" style="display:none; margin-left: 100px" class="center">
         <div class="container form_row">
           <div id="div1" class="label quarter" style="display:none">
             Title:
@@ -81,7 +81,7 @@
         </div>
           <br>
         <div class="container form_row"><div class="quarter"></div>
-          <div class="threequarters">
+          <div class="threequarters center">
             <div v-if="is_logged_in" id="div5" class="submit" style="display:none">
               <button id="add-post" v-on:click="add_post(); displayRemove();">Submit</button>
             </div>

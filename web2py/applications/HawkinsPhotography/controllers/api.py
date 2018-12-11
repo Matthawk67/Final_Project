@@ -1,11 +1,33 @@
 # Here go your api methods.
 
-from gluon.tools import Mail
-mail = Mail()
+def send_contact():
 
-mail.settings.server = 'smtp@gmail.com:465'
-mail.settings.sender = 'myemail@gmail.com'
-mail.settings.login = 'myemail@gmail.com:secret'
+    first_name = request.vars.first_name
+    last_name = request.vars.last_name
+    user_email = request.vars.email
+    phone_number = request.vars.phone_number
+    region = request.vars.region
+    services = request.vars.services
+
+    print(first_name)
+    print(last_name)
+    print(user_email)
+    print(phone_number)
+    print(region)
+    print(services)
+
+    new_message = 'Name: '+str(first_name)+' '+str(last_name)+'\n' + 'Email: ' + str(user_email) +'\n' + 'Phone Number: '+str(phone_number) +'\n' + 'Region: '+str(region) + '\n'+ 'Services: ' + str(services) + '\n'
+
+    if mail:
+        if mail.send(to=['mdhawk15@gmail.com'],
+            subject='Contact Inquery from Hawkins Photography',
+            message= new_message
+        ):
+            response.flash = 'email sent sucessfully.'
+        else:
+            response.flash = 'fail to send email sorry!'
+    else:
+        response.flash = 'Unable to send the email : email parameters not defined'
 
 # API Methods for Blog Posts
 @auth.requires_signature()

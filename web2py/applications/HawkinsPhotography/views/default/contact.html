@@ -4,6 +4,14 @@
 {{end}}
 
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var send_contact_url = "{{=URL('api', 'send_contact')}}";
+</script>
+
+<style>
+    #flash { display:none; background-color:green; color:#fff}
+    #flasherror { display:none; background-color:red; color:#fff}
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,42 +26,44 @@
 <h2 style="text-align: center"> Get in Contact! </h2>
 <h4 style="text-align: center"> I would love to hear from you!</h4>
 <body>
-    <div style="text-align: center; margin: 50px">
+    <div id="vue-div" style="text-align: center; margin: 50px">
         <div class="container form_row">
           <div id="div2" class="form threequarters">
-            <textarea placeholder="First Name"></textarea>
+             <div id="flash">Message Sent!</div>
+             <div id="flasherror">Please Fill Out All Fields</div>
+            <textarea id="first" placeholder="First Name"></textarea>
           </div>
         </div>
         <div class="container form_row">
           <div id="div2" class="form threequarters">
-              <textarea placeholder="Last Name"></textarea>
+              <textarea id="last" placeholder="Last Name"></textarea>
           </div>
         </div>
         <div id="div3" class="container form_row">
           <div id="div4" class="form threequarters">
-            <textarea placeholder="Email"></textarea>
+            <textarea id="email" placeholder="Email"></textarea>
           </div>
         </div>
         <div id="div3" class="container form_row">
           <div id="div4" class="form threequarters">
-            <textarea placeholder="Phone Number"></textarea>
+            <textarea id="phone" placeholder="Phone Number"></textarea>
           </div>
         </div>
         <div id="div3" class="container form_row">
           <div id="div4" class="form threequarters">
-            <textarea placeholder="Region or City"></textarea>
+            <textarea id="region" placeholder="Region or City"></textarea>
           </div>
         </div>
         <div id="div3" class="container form_row">
           <div id="div4" class="form threequarters">
-            <textarea placeholder="Services You are Interested In"></textarea>
+            <textarea id="services" placeholder="Services You are Interested In"></textarea>
           </div>
         </div>
         <br>
         <div class="container form_row">
           <div class="threequarters">
             <div id="div5" class="submit">
-              <button id="add-post">Submit</button>
+              <button v-on:click="send_contact_info" id="submit_button">Submit</button>
             </div>
           </div>
         </div>
@@ -64,3 +74,5 @@
     <br>
 </body>
 </html>
+
+<script src="{{=URL('static', 'js/contact.js')}}"></script>
