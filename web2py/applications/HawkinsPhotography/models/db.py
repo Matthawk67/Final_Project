@@ -71,6 +71,10 @@ auth.define_tables(username=False, signature=False)
 from gluon.tools import Mail
 mail = Mail()
 
+mail.settings.server = 'smtp.gmail.com:465'
+mail.settings.sender = 'matthewhawkinsphotography@gmail.com'
+mail.settings.login = 'matthewhawkinsphotography:CMPS183project'
+mail.settings.ssl = True
 
 # configure email
 #mail = auth.settings.mailer

@@ -1,5 +1,6 @@
 # Here go your api methods.
 
+# Code to handle sending of emails from contact page
 def send_contact():
 
     first_name = request.vars.first_name
@@ -63,3 +64,37 @@ def get_post_list():
         ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))
+
+
+# API Methods for getting the Rating List
+def add_rating():
+    rating_id = db.rating.insert(
+        post_rating=request.vars.post_rating,
+        post_content=request.vars.post_content,
+    )
+    # We return the id of the new post, so we can insert it along all the others.
+    return response.json(dict(rating_id=rating_id))
+
+def edit_rating():
+    post_id = request.vars.post_id
+    post_rating = int(request.vars.post_rating)
+    post_content = request.vars.post_content
+    row = db(db.ratings.id == post_id).select().first()
+    row.update(post_rating = post_rating)
+    row.update(post_content = post_content)
+    row.update_record()
+
+def get_rating_list():
+    results = []
+    # Not logged in.
+    rows = db().select(db.rating.ALL, orderby=~db.rating.post_time)
+    for row in rows:
+        results.append(dict(
+            id=row.id,
+            post_rating=row.post_rating,
+            post_content=row.post_content,
+            post_author=row.post_author,
+        ))
+    # For homogeneity, we always return a dictionary.
+    print(results)
+    return response.json(dict(rating_list=results))

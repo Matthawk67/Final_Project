@@ -1,13 +1,56 @@
 {{extend 'layout.html'}}
 
 {{block head}}
-{{end}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var add_rating_url = "{{=URL('api', 'add_rating', user_signature=True)}}";
+    var get_rating_list_url = "{{=URL('api', 'get_rating_list')}}";
+    var edit_rating_url = "{{=URL('api', 'edit_rating')}}";
+    // Like callbacks.
+    var is_logged_in = "{{='false' if auth.user is None else 'true'}}";
+    var current_user_email = "{{='none' if auth.user is None else auth.user.email}}";
+
+    var replyadd = false;
+    var starsselected = 0;
+
+    function displayAdd() {
+        var x = document.getElementById("add_post");
+        x.style.display = "block";
+        x = document.getElementById("div1");
+        x.style.display = "block";
+        x = document.getElementById("div2");
+        x.style.display = "block";
+        x = document.getElementById("div3");
+        x.style.display = "block";
+        x = document.getElementById("div4");
+        x.style.display = "block";
+        x = document.getElementById("div5");
+        x.style.display = "block";
+    }
+
+        function displayRemove() {
+            var x = document.getElementById("add_post");
+            x.style.display = "none";
+            x = document.getElementById("div1");
+            x.style.display = "none";
+            x = document.getElementById("div2");
+            x.style.display = "none";
+            x = document.getElementById("div3");
+            x.style.display = "none";
+            x = document.getElementById("div4");
+            x.style.display = "none";
+            x = document.getElementById("div5");
+            x.style.display = "none";
+        }
+
+</script>
+{{end}}}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Privacy Policy</title>
+    <title>Testimonials</title>
 </head>
 <body>
 <div style="margin-left: 50px; margin-right: 50px">
@@ -15,4 +58,74 @@
         <img src="{{=URL('static/images', 'logo.png')}}" style="width: 40%">
     </p>
 </div>
-<div style="text-align: center">I apologise as there are no testimonials at this time.</div>
+<div>
+    <div class="main_content">
+    <div id="vue-div" class="display:none">
+        <br>
+
+      <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
+        <div style="text-align: center">
+            <button v-if="is_logged_in" style="vertical-align: center" onclick="displayAdd()">Add Post</button>
+            <br>
+        </div>
+
+      <!-- First, let's add a form to insert blog posts. -->
+      <div id="add_post" style="display:none; margin-left: 100px" class="center">
+        <div class="container form_row">
+          <div id="div1" class="label quarter" style="display:none">
+            Rating
+          </div>
+          <div id="div2" class="form threequarters" style="display:none">
+              <div class="star_rating">
+                <span v-on:click="set_stars(idx)"
+                      v-for="idx in star_indices">
+                    <i v-if="idx <= num_stars" class="fa fa-star"></i>
+                    <i v-if="idx > num_stars" class="fa fa-star-o"></i>
+                </span>
+            </div>
+          </div>
+        </div>
+          <br>
+        <div id="div3" class="container form_row" style="display:none;">
+          <div class="label quarter">
+            Your Comments:
+          </div>
+          <div id="div4" class="form threequarters" style="display:none">
+            <textarea v-model="form_content" placeholder="What did you think?"></textarea>
+          </div>
+        </div>
+          <br>
+        <div class="container form_row"><div class="quarter"></div>
+          <div class="threequarters center">
+            <div v-if="is_logged_in" id="div5" class="submit" style="display:none">
+              <button id="add-post" v-on:click="add_rating(); displayRemove();">Submit</button>
+              <button v-if="is_logged_in" style="vertical-align: center" onclick="displayRemove()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message in case there are no posts. -->
+      <div v-if="rating_list.length === 0" style="text-align: center">I apologise as there are no testimonials at this time.</div>
+
+        <div id="rating_list">
+        <div class="post_div" v-for="rating in rating_list" style="margin: 50px">
+          <div class="post_author">Username: ${rating.post_author}</div>
+          <div class="post_content">My Review: ${rating.post_content}</div>
+          <div class="star_rating">
+              <span v-for="idx in star_indices">
+                    <i v-if="idx <= rating.post_rating" class="fa fa-star"></i>
+                    <i v-if="idx > rating.post_rating" class="fa fa-star-o"></i>
+                </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+
+</div>
+</div>
+<br>
+
+<script src="{{=URL('static', 'js/testimonials.js')}}"></script>
