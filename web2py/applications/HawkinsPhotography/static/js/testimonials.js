@@ -75,13 +75,13 @@ var app = function() {
         p.editing = true;
     };
 
-    self.submit_post = function(post_idx) {
-        var p = self.vue.rating_list[post_idx];
-        var sent_rating = 5;
-        var sent_content = $("textarea#newtitle").val();
+    self.submit_rating = function(rating_idx) {
+        var p = self.vue.rating_list[rating_idx];
+        var sent_rating = p.post_rating;
+        var sent_content = $("textarea#newtext").val();
         $.post(edit_rating_url,
             {
-                post_id: self.vue.rating_list[post_idx].id,
+                rating_id: self.vue.rating_list[rating_idx].id,
                 post_rating: sent_rating,
                 post_content: sent_content
             }
@@ -89,9 +89,26 @@ var app = function() {
         p.editing = false;
     };
 
+    self.edit_stars = function(rating_idx, star_idx){
+        var p = self.vue.rating_list[rating_idx];
+        p.post_rating = star_idx;
+    };
+
     self.set_stars = function(star_idx) {
         // The user has set this as the number of stars for the post.
         self.vue.num_stars = star_idx;
+    };
+
+    self.delete_rating = function(rating_idx) {
+        var p = self.vue.rating_list[rating_idx];
+        $.post(delete_rating_url,
+            {
+                rating_id: self.vue.rating_list[rating_idx].id,
+            }
+            );
+        self.vue.rating_list.splice(rating_idx, 1);
+        self.process_posts();
+        p.editing = false;
     };
 
     // Complete as needed.
@@ -112,10 +129,12 @@ var app = function() {
             set_editing: self.set_editing,
             submit_rating: self.submit_rating,
             get_ratings: self.get_ratings,
+            delete_rating: self.delete_rating,
 
             stars_out: self.stars_out,
             stars_over: self.stars_over,
             set_stars: self.set_stars,
+            edit_stars: self.edit_stars,
         },
     });
 

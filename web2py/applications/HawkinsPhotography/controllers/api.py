@@ -76,13 +76,20 @@ def add_rating():
     return response.json(dict(rating_id=rating_id))
 
 def edit_rating():
-    post_id = request.vars.post_id
-    post_rating = int(request.vars.post_rating)
+    print('i made it here')
+    rating_id = request.vars.rating_id
+    post_rating = request.vars.post_rating
     post_content = request.vars.post_content
-    row = db(db.ratings.id == post_id).select().first()
+    row = db(db.rating.id == rating_id).select().first()
     row.update(post_rating = post_rating)
     row.update(post_content = post_content)
     row.update_record()
+
+def delete_rating():
+    rating_id = request.vars.rating_id
+    rating_id = int(rating_id)
+    row = db(db.rating.id == rating_id).delete()
+    print(row)
 
 def get_rating_list():
     results = []

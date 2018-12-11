@@ -6,6 +6,7 @@
     var add_rating_url = "{{=URL('api', 'add_rating', user_signature=True)}}";
     var get_rating_list_url = "{{=URL('api', 'get_rating_list')}}";
     var edit_rating_url = "{{=URL('api', 'edit_rating')}}";
+    var delete_rating_url = "{{=URL('api', 'delete_rating')}}";
     // Like callbacks.
     var is_logged_in = "{{='false' if auth.user is None else 'true'}}";
     var current_user_email = "{{='none' if auth.user is None else auth.user.email}}";
@@ -65,7 +66,7 @@
 
       <!-- Your code goes here.  Remember to call $("#vue-div").show() once you get the data for the first time. -->
         <div style="text-align: center">
-            <button v-if="is_logged_in" style="vertical-align: center" onclick="displayAdd()">Add Post</button>
+            <button v-if="current_user_email != 'none' " style="vertical-align: center" onclick="displayAdd()">Add Rating</button>
             <br>
         </div>
 
@@ -111,13 +112,31 @@
         <div id="rating_list">
         <div class="post_div" v-for="rating in rating_list" style="margin: 50px">
           <div class="post_author">Username: ${rating.post_author}</div>
-          <div class="post_content">My Review: ${rating.post_content}</div>
-          <div class="star_rating">
+          <div v-if="!rating.editing" class="post_content">My Review: ${rating.post_content}</div>
+          <div v-if="rating.editing">
+              <textarea v-model="rating.post_content" id="newtext"></textarea>
+          </div>
+          <div v-if="!rating.editing" class="star_rating">
               <span v-for="idx in star_indices">
                     <i v-if="idx <= rating.post_rating" class="fa fa-star"></i>
                     <i v-if="idx > rating.post_rating" class="fa fa-star-o"></i>
                 </span>
           </div>
+            <div v-if="rating.editing" class="star_rating">
+              <span v-on:click="edit_stars(rating._idx ,idx)"
+                      v-for="idx in star_indices">
+                    <i v-if="idx <= rating.post_rating" class="fa fa-star"></i>
+                    <i v-if="idx > rating.post_rating" class="fa fa-star-o"></i>
+              </span>
+          </div>
+            <span v-if="is_logged_in">
+                <span v-if="rating.post_author === current_user_email">
+                    <br>
+                    <button v-if="!rating.editing" v-on:click="set_editing(rating._idx)" class="fa fa-pencil-square-o">Edit Post</button>
+                    <button v-if="rating.editing" v-on:click="delete_rating(rating._idx)">Delete Your Review</button>
+                    <button v-if="rating.editing" v-on:click="submit_rating(rating._idx)"> Submit </button>
+                </span>
+              </span>
         </div>
       </div>
 
