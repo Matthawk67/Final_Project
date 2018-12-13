@@ -87,6 +87,7 @@ var app = function() {
             }
             );
         p.editing = false;
+        console.log(p.post_rating);
     };
 
     self.edit_stars = function(rating_idx, star_idx){
@@ -110,6 +111,7 @@ var app = function() {
         self.process_posts();
         p.editing = false;
     };
+
 
     // Complete as needed.
     self.vue = new Vue({
